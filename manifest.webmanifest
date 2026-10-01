@@ -1,0 +1,16 @@
+{
+  "name": "AI Foundations Roadmap",
+  "short_name": "AI Roadmap",
+  "description": "A 16-week, theory-first roadmap of free resources for ML, deep learning, LLMs and applied AI.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#1b1f3b",
+  "theme_color": "#1b1f3b",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

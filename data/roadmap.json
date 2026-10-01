@@ -1,0 +1,397 @@
+{
+  "meta": {
+    "title": "AI Foundations Roadmap",
+    "subtitle": "From zero to a solid base in ML, deep learning, LLMs and applied AI. 16 weeks · ~10 hrs/week · theory-first · 100% free resources.",
+    "lastUpdated": "2026-10-02",
+    "newBadgeDays": 60,
+    "assumes": "Comfortable with multivariable calculus and linear algebra. No prior ML assumed."
+  },
+
+  "changelog": [
+    {
+      "date": "2026-10-02",
+      "title": "Roadmap created",
+      "notes": [
+        "Initial 16-week plan across 6 phases: foundations, classical ML, deep learning, transformers & LLMs, applied AI & agents, and four specialisation weeks (vision, RL, ML systems, safety & interpretability).",
+        "All resources are free to access."
+      ]
+    }
+  ],
+
+  "phases": [
+    {
+      "id": "p0",
+      "title": "Orientation & toolkit",
+      "weeks": "Week 1",
+      "summary": "Fill the one maths gap most people have (probability), get fluent with NumPy, and get the lay of the land.",
+      "weeksList": [
+        {
+          "n": 1,
+          "title": "Probability, NumPy & the big picture",
+          "goal": "Be able to reason about random variables, expectations, Gaussians and Bayes' rule, and to write vectorised NumPy.",
+          "concepts": ["Random variables", "Expectation & variance", "Gaussians", "Bayes' rule", "Vectorisation"],
+          "items": [
+            { "type": "video", "title": "Intro to Large Language Models (1-hr talk)", "by": "Andrej Karpathy", "url": "https://www.youtube.com/watch?v=zjkBMFhNj_g", "hours": 1, "core": true, "note": "Motivation: where this whole roadmap is heading." },
+            { "type": "book", "title": "Probabilistic Machine Learning: An Introduction — Ch. 1", "by": "Kevin Murphy", "url": "https://probml.github.io/pml-book/book1.html", "hours": 1.5, "core": true, "note": "Free PDF. A crisp map of supervised, unsupervised and reinforcement learning." },
+            { "type": "book", "title": "Mathematics for Machine Learning — Ch. 6 (Probability & Distributions)", "by": "Deisenroth, Faisal & Ong", "url": "https://mml-book.github.io/", "hours": 3, "core": true, "note": "Free PDF. The probability you need for everything that follows. Skim Ch. 5 (vector calculus) as a refresher." },
+            { "type": "docs", "title": "CS229 Probability Theory Review", "by": "Stanford CS229", "url": "https://cs229.stanford.edu/section/cs229-prob.pdf", "hours": 1.5, "core": true, "note": "A compact reference sheet to keep open." },
+            { "type": "course", "title": "Python & NumPy Tutorial", "by": "Stanford CS231n", "url": "https://cs231n.github.io/python-numpy-tutorial/", "hours": 1.5, "core": true, "note": "Broadcasting and vectorisation are the key ideas." },
+            { "type": "blog", "title": "A Visual Introduction to Machine Learning", "by": "R2D3", "url": "https://r2d3.us/visual-intro-to-machine-learning-part-1/", "hours": 0.5, "core": true, "note": "Beautiful scrolly explainer of decision trees and overfitting." },
+            { "type": "video", "title": "Essence of Linear Algebra", "by": "3Blue1Brown", "url": "https://www.3blue1brown.com/topics/linear-algebra", "hours": 2, "core": false, "note": "Geometric intuition for the linear algebra you already know. Watch at 1.5×." }
+          ],
+          "build": "Set up Python + Jupyter (or Google Colab). Simulate draws from a few distributions, check the law of large numbers, and code Bayes' rule for a medical-test example."
+        }
+      ]
+    },
+
+    {
+      "id": "p1",
+      "title": "Classical machine learning",
+      "weeks": "Weeks 2–4",
+      "summary": "The core ideas every later topic reuses: loss functions, maximum likelihood, generalisation, regularisation and the bias–variance trade-off. Andrew Ng's CS229 is the backbone.",
+      "weeksList": [
+        {
+          "n": 2,
+          "title": "Supervised learning I: linear models & the probabilistic view",
+          "goal": "Derive linear and logistic regression from maximum likelihood and train them with gradient descent.",
+          "concepts": ["Linear regression", "Gradient descent", "MLE", "Logistic regression", "GLMs", "Newton's method"],
+          "items": [
+            { "type": "video", "title": "CS229 (Autumn 2018) — Lectures 1–4", "by": "Andrew Ng, Stanford", "url": "https://www.youtube.com/playlist?list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU", "hours": 4.5, "core": true, "note": "Intro, linear regression, locally weighted & logistic regression, Newton's method, GLMs." },
+            { "type": "book", "title": "CS229 Lecture Notes — Ch. 1–3", "by": "Andrew Ng & Tengyu Ma", "url": "https://cs229.stanford.edu/main_notes.pdf", "hours": 3, "core": true, "note": "Work through the derivations with pen and paper; this is where the theory sticks." },
+            { "type": "book", "title": "An Introduction to Statistical Learning (Python) — Ch. 2", "by": "James, Witten, Hastie, Tibshirani & Taylor", "url": "https://www.statlearning.com/", "hours": 1.5, "core": true, "note": "Free PDF. The gentlest treatment of what 'learning' and 'error' mean." },
+            { "type": "book", "title": "ISLP — Ch. 3–4 (Linear regression, Classification)", "by": "James et al.", "url": "https://www.statlearning.com/", "hours": 3, "core": false, "note": "A more statistical angle on the same models; good for intuition." }
+          ],
+          "build": "Implement linear and logistic regression from scratch in NumPy with batch gradient descent, then check your answers against scikit-learn."
+        },
+        {
+          "n": 3,
+          "title": "Supervised learning II: generalisation, kernels & trees",
+          "goal": "Understand why models overfit, how to measure it, and the main model families beyond linear models.",
+          "concepts": ["Bias–variance", "Regularisation", "Cross-validation", "Generative vs discriminative", "SVMs & kernels", "Trees & ensembles"],
+          "items": [
+            { "type": "video", "title": "CS229 (Autumn 2018) — Lectures 5–9", "by": "Andrew Ng, Stanford", "url": "https://www.youtube.com/playlist?list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU", "hours": 6, "core": true, "note": "GDA & Naive Bayes (5), SVMs (6), kernels (7), data splits & cross-validation (8), decision trees & ensembles (9)." },
+            { "type": "book", "title": "CS229 Lecture Notes — generative models, kernels, regularisation", "by": "Andrew Ng & Tengyu Ma", "url": "https://cs229.stanford.edu/main_notes.pdf", "hours": 2, "core": true, "note": "Read alongside the lectures above." },
+            { "type": "book", "title": "ISLP — Ch. 8 (Tree-based methods)", "by": "James et al.", "url": "https://www.statlearning.com/", "hours": 2, "core": false, "note": "Decision trees, bagging, random forests and boosting. Still the default for tabular data." },
+            { "type": "paper", "title": "A Few Useful Things to Know About Machine Learning", "by": "Pedro Domingos (2012)", "url": "https://homes.cs.washington.edu/~pedrod/papers/cacm12.pdf", "hours": 0.75, "core": true, "note": "Twelve hard-won lessons. Reread it at the end of the roadmap." },
+            { "type": "book", "title": "ISLP — Ch. 5–6 (Resampling, Regularisation)", "by": "James et al.", "url": "https://www.statlearning.com/", "hours": 2.5, "core": false, "note": "Bootstrap, CV, ridge and lasso in depth." },
+            { "type": "paper", "title": "XGBoost: A Scalable Tree Boosting System", "by": "Chen & Guestrin (2016)", "url": "https://arxiv.org/abs/1603.02754", "hours": 1, "core": false, "note": "The gradient-boosting workhorse of industry and Kaggle." }
+          ],
+          "build": "Pick a tabular dataset (e.g. from the UCI repository). Compare logistic regression, an SVM, a random forest and gradient boosting using k-fold cross-validation in scikit-learn."
+        },
+        {
+          "n": 4,
+          "title": "Unsupervised learning & ML practice",
+          "goal": "Cluster, reduce dimensionality, fit latent-variable models with EM, and diagnose a failing model.",
+          "concepts": ["k-means", "Gaussian mixtures", "EM algorithm", "PCA", "t-SNE", "Error analysis"],
+          "items": [
+            { "type": "video", "title": "CS229 (Autumn 2018) — Lecture 12: Debugging ML models & error analysis", "by": "Andrew Ng, Stanford", "url": "https://www.youtube.com/playlist?list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU", "hours": 1.25, "core": true, "note": "Ng's practical playbook for when things don't work. Very high value." },
+            { "type": "video", "title": "CS229 (Autumn 2018) — Lectures 13–15: k-means, EM, factor analysis, PCA & ICA", "by": "Andrew Ng, Stanford", "url": "https://www.youtube.com/playlist?list=PLoROMvodv4rMiGQp3WXShtMGgzqpfVfbU", "hours": 3.75, "core": true, "note": "EM is the first 'latent variable' idea; it comes back in VAEs and diffusion." },
+            { "type": "book", "title": "ISLP — Ch. 12 (Unsupervised learning)", "by": "James et al.", "url": "https://www.statlearning.com/", "hours": 2, "core": true, "note": "PCA and clustering with clear intuition." },
+            { "type": "blog", "title": "How to Use t-SNE Effectively", "by": "Wattenberg, Viégas & Johnson (Distill)", "url": "https://distill.pub/2016/misread-tsne/", "hours": 0.5, "core": true, "note": "Interactive. Teaches you not to over-read embedding plots." },
+            { "type": "book", "title": "Pattern Recognition and Machine Learning — Ch. 9 (Mixture models & EM)", "by": "Christopher Bishop", "url": "https://www.microsoft.com/en-us/research/publication/pattern-recognition-machine-learning/", "hours": 2, "core": false, "note": "Free PDF. The classic rigorous treatment of EM." },
+            { "type": "book", "title": "Understanding Machine Learning — Ch. 2–5 (PAC learning, VC dimension)", "by": "Shalev-Shwartz & Ben-David", "url": "https://www.cs.huji.ac.il/~shais/UnderstandingMachineLearning/", "hours": 3, "core": false, "note": "Free PDF. Learning theory: worth it if you're heading for a research masters." }
+          ],
+          "build": "Run PCA on MNIST and plot the first two components; implement k-means from scratch and compare it with scikit-learn's GaussianMixture."
+        }
+      ]
+    },
+
+    {
+      "id": "p2",
+      "title": "Deep learning foundations",
+      "weeks": "Weeks 5–7",
+      "summary": "Neural networks, backpropagation, optimisation and CNNs. Simon Prince's Understanding Deep Learning is the theory spine; Karpathy's Zero to Hero series makes it concrete.",
+      "weeksList": [
+        {
+          "n": 5,
+          "title": "Neural networks & backpropagation",
+          "goal": "Understand what an MLP computes, why depth helps, and derive backprop as reverse-mode autodiff.",
+          "concepts": ["MLPs", "Activation functions", "Universal approximation", "Computational graphs", "Backprop / autodiff", "Loss functions as likelihoods"],
+          "items": [
+            { "type": "video", "title": "Neural Networks, Ch. 1–4", "by": "3Blue1Brown", "url": "https://www.3blue1brown.com/topics/neural-networks", "hours": 1.5, "core": true, "note": "The best visual intuition for gradient descent and backprop." },
+            { "type": "book", "title": "Understanding Deep Learning — Ch. 3–5 & 7", "by": "Simon J.D. Prince", "url": "https://udlbook.github.io/udlbook/", "hours": 4, "core": true, "note": "Free PDF. Shallow nets, deep nets, loss functions, gradients and initialisation. Rigorous but readable." },
+            { "type": "video", "title": "Building micrograd: the spelled-out intro to neural nets & backprop", "by": "Andrej Karpathy", "url": "https://www.youtube.com/watch?v=VMj-3S1tku0", "hours": 2.5, "core": true, "note": "Builds an autograd engine in ~100 lines. Code along." },
+            { "type": "docs", "title": "CS231n notes: Backpropagation, intuitions", "by": "Stanford CS231n", "url": "https://cs231n.github.io/optimization-2/", "hours": 1, "core": false, "note": "Gradient flow through common gates, with worked examples." },
+            { "type": "blog", "title": "Yes you should understand backprop", "by": "Andrej Karpathy", "url": "https://karpathy.medium.com/yes-you-should-understand-backprop-e2f06eab496b", "hours": 0.25, "core": false, "note": "Short: why leaky abstractions bite." }
+          ],
+          "build": "Finish your own micrograd, then train a 2-layer MLP on a toy 2D dataset and plot the decision boundary."
+        },
+        {
+          "n": 6,
+          "title": "Training deep nets: optimisation, regularisation & PyTorch",
+          "goal": "Know how to make deep nets train well (optimisers, initialisation, normalisation, regularisation) and be fluent in basic PyTorch.",
+          "concepts": ["SGD & momentum", "Adam", "Initialisation", "BatchNorm / LayerNorm", "Dropout & weight decay", "Double descent"],
+          "items": [
+            { "type": "book", "title": "Understanding Deep Learning — Ch. 6, 8, 9", "by": "Simon J.D. Prince", "url": "https://udlbook.github.io/udlbook/", "hours": 3.5, "core": true, "note": "Fitting models, measuring performance (incl. double descent) and regularisation." },
+            { "type": "video", "title": "makemore Part 1 (bigrams) & Part 2 (MLP)", "by": "Andrej Karpathy", "url": "https://www.youtube.com/watch?v=TCH_1BHY58I", "hours": 3, "core": true, "note": "Learn PyTorch tensors while building a character-level language model. Start with Part 1.", "links": [{ "label": "Part 1: bigrams", "url": "https://www.youtube.com/watch?v=PaCmpygFfXo" }] },
+            { "type": "paper", "title": "Adam: A Method for Stochastic Optimization", "by": "Kingma & Ba (2014)", "url": "https://arxiv.org/abs/1412.6980", "hours": 1, "core": true, "note": "The default optimiser. Focus on Algorithm 1 and the bias correction." },
+            { "type": "blog", "title": "A Recipe for Training Neural Networks", "by": "Andrej Karpathy", "url": "https://karpathy.github.io/2019/04/25/recipe/", "hours": 0.5, "core": true, "note": "Practical wisdom you'll return to for years." },
+            { "type": "docs", "title": "PyTorch: Learn the Basics", "by": "PyTorch", "url": "https://docs.pytorch.org/tutorials/beginner/basics/intro.html", "hours": 1.5, "core": true, "note": "Tensors, datasets, autograd, the training loop." },
+            { "type": "video", "title": "makemore Part 3: Activations, gradients & BatchNorm", "by": "Andrej Karpathy", "url": "https://www.youtube.com/watch?v=P6sfmUTpUmc", "hours": 2, "core": false, "note": "Deep intuition for why initialisation and normalisation matter." },
+            { "type": "blog", "title": "Why Momentum Really Works", "by": "Gabriel Goh (Distill)", "url": "https://distill.pub/2017/momentum/", "hours": 1, "core": false, "note": "Interactive. The maths of momentum, nicely visualised." },
+            { "type": "paper", "title": "Dropout: A Simple Way to Prevent Neural Networks from Overfitting", "by": "Srivastava et al. (2014)", "url": "https://jmlr.org/papers/v15/srivastava14a.html", "hours": 1, "core": false, "note": "" },
+            { "type": "paper", "title": "Batch Normalization", "by": "Ioffe & Szegedy (2015)", "url": "https://arxiv.org/abs/1502.03167", "hours": 1, "core": false, "note": "Read for the idea; the original 'internal covariate shift' explanation is now disputed." }
+          ],
+          "build": "Rewrite your Week 5 MLP in PyTorch. Train on MNIST with SGD, then Adam; add dropout and weight decay and compare learning curves."
+        },
+        {
+          "n": 7,
+          "title": "Convolutional networks & residual architectures",
+          "goal": "Understand convolutions, inductive bias, and why residual connections unlocked very deep networks.",
+          "concepts": ["Convolution & pooling", "Receptive fields", "Inductive bias", "Residual connections", "Transfer learning"],
+          "items": [
+            { "type": "docs", "title": "CS231n notes: Convolutional Neural Networks", "by": "Stanford CS231n", "url": "https://cs231n.github.io/convolutional-networks/", "hours": 1.5, "core": true, "note": "The standard reference on CNN layers and their shapes." },
+            { "type": "book", "title": "Understanding Deep Learning — Ch. 10–11", "by": "Simon J.D. Prince", "url": "https://udlbook.github.io/udlbook/", "hours": 2.5, "core": true, "note": "Convolutional networks and residual networks." },
+            { "type": "paper", "title": "ImageNet Classification with Deep CNNs (AlexNet)", "by": "Krizhevsky, Sutskever & Hinton (2012)", "url": "https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html", "hours": 1, "core": true, "note": "The paper that kicked off the deep learning era." },
+            { "type": "paper", "title": "Deep Residual Learning for Image Recognition (ResNet)", "by": "He et al. (2015)", "url": "https://arxiv.org/abs/1512.03385", "hours": 1, "core": true, "note": "Residual connections show up in every modern architecture, transformers included." },
+            { "type": "video", "title": "CS231n (2017) lectures 5 & 9: CNNs and CNN architectures", "by": "Stanford CS231n", "url": "https://www.youtube.com/playlist?list=PL3FW7Lu3i5JvHM8ljYj-zLfQRF3EO8sYv", "hours": 2.5, "core": false, "note": "" },
+            { "type": "blog", "title": "Feature Visualization", "by": "Olah, Mordvintsev & Schubert (Distill)", "url": "https://distill.pub/2017/feature-visualization/", "hours": 0.75, "core": false, "note": "What CNN neurons respond to. An early taste of interpretability." }
+          ],
+          "build": "Train a small CNN on CIFAR-10 in PyTorch. Then fine-tune a pretrained ResNet-18 from torchvision and compare."
+        }
+      ]
+    },
+
+    {
+      "id": "p3",
+      "title": "Transformers & large language models",
+      "weeks": "Weeks 8–10",
+      "summary": "From word embeddings and attention to GPT, then scaling laws and post-training (RLHF). This is the core of modern AI.",
+      "weeksList": [
+        {
+          "n": 8,
+          "title": "Sequences, embeddings & attention",
+          "goal": "Understand how text becomes vectors, why RNNs struggled, and how attention solved it.",
+          "concepts": ["Tokenisation", "Word embeddings", "RNNs & LSTMs", "Seq2seq", "Attention", "Self-attention"],
+          "items": [
+            { "type": "blog", "title": "The Illustrated Word2vec", "by": "Jay Alammar", "url": "https://jalammar.github.io/illustrated-word2vec/", "hours": 0.5, "core": true, "note": "" },
+            { "type": "paper", "title": "Efficient Estimation of Word Representations in Vector Space (word2vec)", "by": "Mikolov et al. (2013)", "url": "https://arxiv.org/abs/1301.3781", "hours": 1, "core": true, "note": "" },
+            { "type": "blog", "title": "Understanding LSTM Networks", "by": "Chris Olah", "url": "https://colah.github.io/posts/2015-08-Understanding-LSTMs/", "hours": 0.5, "core": true, "note": "" },
+            { "type": "paper", "title": "Neural Machine Translation by Jointly Learning to Align and Translate", "by": "Bahdanau, Cho & Bengio (2014)", "url": "https://arxiv.org/abs/1409.0473", "hours": 1, "core": true, "note": "Where attention was introduced." },
+            { "type": "video", "title": "But what is a GPT? & Attention in transformers, visually explained", "by": "3Blue1Brown", "url": "https://www.youtube.com/watch?v=wjZofJX0v4M", "hours": 1.5, "core": true, "note": "Two videos, watched in order.", "links": [{ "label": "Attention in transformers", "url": "https://www.youtube.com/watch?v=eMlx5fFNoYc" }] },
+            { "type": "book", "title": "Understanding Deep Learning — Ch. 12 (Transformers)", "by": "Simon J.D. Prince", "url": "https://udlbook.github.io/udlbook/", "hours": 2, "core": true, "note": "" },
+            { "type": "blog", "title": "The Unreasonable Effectiveness of Recurrent Neural Networks", "by": "Andrej Karpathy", "url": "https://karpathy.github.io/2015/05/21/rnn-effectiveness/", "hours": 0.5, "core": false, "note": "A historical classic." }
+          ],
+          "build": "Implement single-head scaled dot-product attention in NumPy and check it against torch.nn.functional.scaled_dot_product_attention."
+        },
+        {
+          "n": 9,
+          "title": "Transformers in depth: build a GPT",
+          "goal": "Know every component of a decoder-only transformer and how pretraining with next-token prediction works.",
+          "concepts": ["Multi-head attention", "Positional encodings", "LayerNorm & residual stream", "Causal masking", "BPE tokenisation", "Encoder vs decoder"],
+          "items": [
+            { "type": "blog", "title": "The Illustrated Transformer", "by": "Jay Alammar", "url": "https://jalammar.github.io/illustrated-transformer/", "hours": 1, "core": true, "note": "" },
+            { "type": "paper", "title": "Attention Is All You Need", "by": "Vaswani et al. (2017)", "url": "https://arxiv.org/abs/1706.03762", "hours": 1.5, "core": true, "note": "Probably the most important paper on this roadmap." },
+            { "type": "video", "title": "Let's build GPT: from scratch, in code, spelled out", "by": "Andrej Karpathy", "url": "https://www.youtube.com/watch?v=kCc8FmEb1nY", "hours": 3, "core": true, "note": "Code along. By the end you'll have trained a small transformer yourself." },
+            { "type": "blog", "title": "Transformer Explainer (interactive)", "by": "Georgia Tech Polo Club", "url": "https://poloclub.github.io/transformer-explainer/", "hours": 0.5, "core": true, "note": "Runs GPT-2 in your browser so you can watch the tensors flow." },
+            { "type": "paper", "title": "BERT: Pre-training of Deep Bidirectional Transformers", "by": "Devlin et al. (2018)", "url": "https://arxiv.org/abs/1810.04805", "hours": 1, "core": true, "note": "The encoder-only counterpart; still the basis of most embedding models." },
+            { "type": "video", "title": "Let's build the GPT Tokenizer", "by": "Andrej Karpathy", "url": "https://www.youtube.com/watch?v=zduSFxRajkE", "hours": 2, "core": false, "note": "Many LLM quirks trace back to tokenisation." },
+            { "type": "code", "title": "The Annotated Transformer", "by": "Harvard NLP", "url": "https://nlp.seas.harvard.edu/annotated-transformer/", "hours": 2, "core": false, "note": "The original paper, line by line in PyTorch." },
+            { "type": "blog", "title": "The Transformer Family, Version 2.0", "by": "Lilian Weng", "url": "https://lilianweng.github.io/posts/2023-01-27-the-transformer-family-v2/", "hours": 1.5, "core": false, "note": "A survey of architectural variants. Use it as a reference." }
+          ],
+          "build": "Finish the GPT build. Train it on a text corpus of your choice and try changing the context length, number of heads and depth."
+        },
+        {
+          "n": 10,
+          "title": "LLMs: pretraining, scaling & post-training",
+          "goal": "Understand how frontier LLMs are made: scale, data, compute-optimal training, instruction tuning and RLHF.",
+          "concepts": ["In-context learning", "Scaling laws", "Compute-optimal training", "SFT", "RLHF", "DPO", "LoRA"],
+          "items": [
+            { "type": "video", "title": "Deep Dive into LLMs like ChatGPT", "by": "Andrej Karpathy", "url": "https://www.youtube.com/watch?v=7xTGNNLPyMI", "hours": 3.5, "core": true, "note": "The full lifecycle: data, tokenisation, pretraining, SFT, RL. The best single overview there is." },
+            { "type": "paper", "title": "Language Models are Unsupervised Multitask Learners (GPT-2)", "by": "Radford et al. (2019)", "url": "https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf", "hours": 1, "core": true, "note": "" },
+            { "type": "paper", "title": "Language Models are Few-Shot Learners (GPT-3) — §1–3", "by": "Brown et al. (2020)", "url": "https://arxiv.org/abs/2005.14165", "hours": 1.5, "core": true, "note": "In-context learning appears." },
+            { "type": "paper", "title": "Scaling Laws for Neural Language Models", "by": "Kaplan et al. (2020)", "url": "https://arxiv.org/abs/2001.08361", "hours": 1, "core": true, "note": "Read with Chinchilla, which corrects it." },
+            { "type": "paper", "title": "Training Compute-Optimal LLMs (Chinchilla)", "by": "Hoffmann et al. (2022)", "url": "https://arxiv.org/abs/2203.15556", "hours": 1, "core": true, "note": "" },
+            { "type": "paper", "title": "Training language models to follow instructions with human feedback (InstructGPT)", "by": "Ouyang et al. (2022)", "url": "https://arxiv.org/abs/2203.02155", "hours": 1, "core": true, "note": "The recipe behind ChatGPT." },
+            { "type": "paper", "title": "Direct Preference Optimization", "by": "Rafailov et al. (2023)", "url": "https://arxiv.org/abs/2305.18290", "hours": 1.5, "core": false, "note": "RLHF without the RL. Elegant derivation." },
+            { "type": "paper", "title": "LoRA: Low-Rank Adaptation of Large Language Models", "by": "Hu et al. (2021)", "url": "https://arxiv.org/abs/2106.09685", "hours": 1, "core": false, "note": "How almost everyone fine-tunes in practice." },
+            { "type": "blog", "title": "RLHF: Reinforcement Learning from Human Feedback", "by": "Chip Huyen", "url": "https://huyenchip.com/2023/05/02/rlhf.html", "hours": 1, "core": false, "note": "" }
+          ],
+          "build": "Use a scaling-law formula to estimate the compute-optimal model size and token count for a few compute budgets. Optionally, LoRA fine-tune a small open model in a free Colab GPU."
+        }
+      ]
+    },
+
+    {
+      "id": "p4",
+      "title": "Applied AI: reasoning, RAG & agents",
+      "weeks": "Weeks 11–12",
+      "summary": "How modern reasoning models work, and how to build reliable systems on top of LLMs: prompting, evals, retrieval, tools and agents.",
+      "weeksList": [
+        {
+          "n": 11,
+          "title": "Reasoning models, prompting & evals",
+          "goal": "Understand test-time compute and RL-trained reasoning, and learn to prompt and evaluate LLM systems rigorously.",
+          "concepts": ["Chain-of-thought", "Test-time compute", "RL with verifiable rewards", "Prompt engineering", "LLM evals", "LLM-as-judge"],
+          "items": [
+            { "type": "paper", "title": "Chain-of-Thought Prompting Elicits Reasoning in LLMs", "by": "Wei et al. (2022)", "url": "https://arxiv.org/abs/2201.11903", "hours": 0.75, "core": true, "note": "" },
+            { "type": "paper", "title": "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via RL", "by": "DeepSeek-AI (2025)", "url": "https://arxiv.org/abs/2501.12948", "hours": 1.5, "core": true, "note": "An open, detailed account of training a reasoning model with RL." },
+            { "type": "blog", "title": "Why We Think", "by": "Lilian Weng", "url": "https://lilianweng.github.io/posts/2025-05-01-thinking/", "hours": 1.5, "core": true, "note": "A survey of test-time compute and reasoning." },
+            { "type": "blog", "title": "Understanding Reasoning LLMs", "by": "Sebastian Raschka", "url": "https://magazine.sebastianraschka.com/p/understanding-reasoning-llms", "hours": 1, "core": true, "note": "" },
+            { "type": "docs", "title": "Prompt engineering overview & guides", "by": "Anthropic", "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview", "hours": 1.5, "core": true, "note": "Practical, model-agnostic techniques." },
+            { "type": "blog", "title": "Your AI Product Needs Evals", "by": "Hamel Husain", "url": "https://hamel.dev/blog/posts/evals/", "hours": 1, "core": true, "note": "The most important habit in applied AI." },
+            { "type": "blog", "title": "Patterns for Building LLM-based Systems & Products", "by": "Eugene Yan", "url": "https://eugeneyan.com/writing/llm-patterns/", "hours": 1.5, "core": true, "note": "Evals, RAG, fine-tuning, caching, guardrails, all in one place." },
+            { "type": "paper", "title": "The Llama 3 Herd of Models", "by": "Meta (2024)", "url": "https://arxiv.org/abs/2407.21783", "hours": 2.5, "core": false, "note": "An unusually complete public account of building a frontier-class model. Skim it." }
+          ],
+          "build": "Run a small open model locally (e.g. with Ollama) and write a 30-example eval for a task you care about. Compare plain prompting with chain-of-thought."
+        },
+        {
+          "n": 12,
+          "title": "Retrieval, tools & agents",
+          "goal": "Build intuition for RAG, tool use, agent loops and context engineering, and for when not to use an agent.",
+          "concepts": ["Embeddings & vector search", "RAG", "Tool / function calling", "ReAct", "Agent loops", "Context engineering", "MCP"],
+          "items": [
+            { "type": "paper", "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP", "by": "Lewis et al. (2020)", "url": "https://arxiv.org/abs/2005.11401", "hours": 1, "core": true, "note": "" },
+            { "type": "blog", "title": "Introducing Contextual Retrieval", "by": "Anthropic", "url": "https://www.anthropic.com/engineering/contextual-retrieval", "hours": 0.5, "core": true, "note": "Practical RAG improvements with measured results." },
+            { "type": "paper", "title": "ReAct: Synergizing Reasoning and Acting in Language Models", "by": "Yao et al. (2022)", "url": "https://arxiv.org/abs/2210.03629", "hours": 1, "core": true, "note": "The foundational agent-loop pattern." },
+            { "type": "blog", "title": "Building Effective Agents", "by": "Anthropic", "url": "https://www.anthropic.com/engineering/building-effective-agents", "hours": 0.75, "core": true, "note": "Workflows vs agents, and why simple usually wins." },
+            { "type": "blog", "title": "Effective Context Engineering for AI Agents", "by": "Anthropic", "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents", "hours": 0.5, "core": true, "note": "" },
+            { "type": "blog", "title": "LLM Powered Autonomous Agents", "by": "Lilian Weng", "url": "https://lilianweng.github.io/posts/2023-06-23-agent/", "hours": 1, "core": true, "note": "Planning, memory and tool use." },
+            { "type": "blog", "title": "Agents", "by": "Chip Huyen", "url": "https://huyenchip.com/2025/01/07/agents.html", "hours": 1, "core": true, "note": "Tools, planning and failure modes." },
+            { "type": "docs", "title": "Model Context Protocol: Introduction", "by": "MCP", "url": "https://modelcontextprotocol.io/docs/getting-started/intro", "hours": 0.5, "core": true, "note": "The emerging standard for connecting models to tools and data." },
+            { "type": "course", "title": "Hugging Face AI Agents Course", "by": "Hugging Face", "url": "https://huggingface.co/learn/agents-course", "hours": 4, "core": false, "note": "Free, hands-on, with a certificate." },
+            { "type": "paper", "title": "SWE-bench: Can LMs Resolve Real-World GitHub Issues?", "by": "Jimenez et al. (2023)", "url": "https://arxiv.org/abs/2310.06770", "hours": 1, "core": false, "note": "How agentic coding is measured." }
+          ],
+          "build": "Build a tiny RAG system over your own notes (a local embedding model plus cosine search), then wrap it as a tool in a minimal agent loop of about 50 lines."
+        }
+      ]
+    },
+
+    {
+      "id": "p5",
+      "title": "Specialisations",
+      "weeks": "Weeks 13–16",
+      "summary": "One focused week each on computer vision & generative models, reinforcement learning, ML systems / MLOps, and safety & interpretability. The four weeks can be done in any order.",
+      "weeksList": [
+        {
+          "n": 13,
+          "title": "Computer vision & generative models",
+          "goal": "Understand vision transformers, joint image–text embeddings and diffusion, the basis of modern image and video generation.",
+          "concepts": ["Vision Transformer", "Contrastive learning", "CLIP", "Diffusion / score models", "Latent diffusion", "Flow matching"],
+          "tags": ["Computer vision"],
+          "items": [
+            { "type": "paper", "title": "An Image is Worth 16x16 Words (ViT)", "by": "Dosovitskiy et al. (2020)", "url": "https://arxiv.org/abs/2010.11929", "hours": 1, "core": true, "note": "" },
+            { "type": "paper", "title": "Learning Transferable Visual Models From Natural Language Supervision (CLIP)", "by": "Radford et al. (2021)", "url": "https://arxiv.org/abs/2103.00020", "hours": 1.5, "core": true, "note": "Contrastive image–text learning; the root of most multimodal models." },
+            { "type": "book", "title": "Understanding Deep Learning — Ch. 18 (Diffusion models)", "by": "Simon J.D. Prince", "url": "https://udlbook.github.io/udlbook/", "hours": 2.5, "core": true, "note": "The clearest derivation of diffusion available." },
+            { "type": "paper", "title": "Denoising Diffusion Probabilistic Models (DDPM)", "by": "Ho, Jain & Abbeel (2020)", "url": "https://arxiv.org/abs/2006.11239", "hours": 1, "core": true, "note": "" },
+            { "type": "blog", "title": "What are Diffusion Models?", "by": "Lilian Weng", "url": "https://lilianweng.github.io/posts/2021-07-11-diffusion-models/", "hours": 1.5, "core": true, "note": "" },
+            { "type": "paper", "title": "High-Resolution Image Synthesis with Latent Diffusion Models", "by": "Rombach et al. (2021)", "url": "https://arxiv.org/abs/2112.10752", "hours": 1, "core": false, "note": "Stable Diffusion." },
+            { "type": "blog", "title": "An Introduction to Flow Matching", "by": "Cambridge MLG", "url": "https://mlg.eng.cam.ac.uk/blog/2024/01/20/flow-matching.html", "hours": 1.5, "core": false, "note": "The training objective behind many current image and video models." },
+            { "type": "paper", "title": "Segment Anything", "by": "Kirillov et al. (2023)", "url": "https://arxiv.org/abs/2304.02643", "hours": 0.75, "core": false, "note": "Foundation models for segmentation." },
+            { "type": "paper", "title": "U-Net: Convolutional Networks for Biomedical Image Segmentation", "by": "Ronneberger et al. (2015)", "url": "https://arxiv.org/abs/1505.04597", "hours": 0.5, "core": false, "note": "The backbone of classic diffusion models." }
+          ],
+          "build": "Use CLIP (via Hugging Face transformers) for zero-shot classification on a few images of your own. Optionally, train a tiny DDPM on MNIST."
+        },
+        {
+          "n": 14,
+          "title": "Reinforcement learning",
+          "goal": "Grasp MDPs, value functions, policy gradients and PPO, which is the RL behind RLHF and reasoning models.",
+          "concepts": ["MDPs", "Bellman equations", "TD learning & Q-learning", "Policy gradients", "Actor-critic", "PPO", "GRPO"],
+          "tags": ["Reinforcement learning"],
+          "items": [
+            { "type": "video", "title": "RL Course — Lectures 1–2 (Intro, MDPs)", "by": "David Silver (DeepMind / UCL)", "url": "https://www.youtube.com/playlist?list=PLqYmG7hTraZDM-OYHWgPebj2MfCFzFObQ", "hours": 3, "core": true, "note": "The classic RL course. Lectures 3–7 are a great follow-up." },
+            { "type": "book", "title": "Reinforcement Learning: An Introduction — Ch. 3 & 6", "by": "Sutton & Barto", "url": "http://incompleteideas.net/book/the-book-2nd.html", "hours": 3, "core": true, "note": "Free PDF. Finite MDPs and temporal-difference learning. Skim Ch. 4 (DP)." },
+            { "type": "course", "title": "Spinning Up in Deep RL — Introduction to RL (Parts 1–3)", "by": "OpenAI", "url": "https://spinningup.openai.com/en/latest/spinningup/rl_intro.html", "hours": 2, "core": true, "note": "A concise bridge from theory to deep RL, including policy-gradient derivations." },
+            { "type": "paper", "title": "Playing Atari with Deep Reinforcement Learning (DQN)", "by": "Mnih et al. (2013)", "url": "https://arxiv.org/abs/1312.5602", "hours": 0.75, "core": true, "note": "" },
+            { "type": "paper", "title": "Proximal Policy Optimization Algorithms (PPO)", "by": "Schulman et al. (2017)", "url": "https://arxiv.org/abs/1707.06347", "hours": 1, "core": true, "note": "The RL algorithm in classic RLHF." },
+            { "type": "blog", "title": "Policy Gradient Algorithms", "by": "Lilian Weng", "url": "https://lilianweng.github.io/posts/2018-04-08-policy-gradient/", "hours": 1.5, "core": false, "note": "" },
+            { "type": "paper", "title": "DeepSeekMath (introduces GRPO)", "by": "Shao et al. (2024)", "url": "https://arxiv.org/abs/2402.03300", "hours": 1, "core": false, "note": "The critic-free RL variant behind many reasoning models." },
+            { "type": "book", "title": "RLHF Book", "by": "Nathan Lambert", "url": "https://rlhfbook.com/", "hours": 3, "core": false, "note": "Free online. Connects this week back to LLM post-training." },
+            { "type": "course", "title": "Hugging Face Deep RL Course", "by": "Hugging Face", "url": "https://huggingface.co/learn/deep-rl-course", "hours": 6, "core": false, "note": "Hands-on with Gymnasium environments." }
+          ],
+          "build": "Implement tabular Q-learning on Gymnasium's FrozenLake, then REINFORCE on CartPole."
+        },
+        {
+          "n": 15,
+          "title": "ML systems, MLOps & efficient inference",
+          "goal": "Understand what it takes to ship and serve ML: data and feature pipelines, monitoring, GPU performance, parallelism, quantisation and LLM serving.",
+          "concepts": ["Technical debt in ML", "Data & model monitoring", "Rooflines / memory bandwidth", "Data, tensor & pipeline parallelism", "KV cache", "Quantisation"],
+          "tags": ["MLOps / systems"],
+          "items": [
+            { "type": "paper", "title": "Hidden Technical Debt in Machine Learning Systems", "by": "Sculley et al. (2015)", "url": "https://papers.nips.cc/paper_files/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html", "hours": 0.75, "core": true, "note": "Why the model is the smallest box in the diagram." },
+            { "type": "docs", "title": "Rules of Machine Learning", "by": "Martin Zinkevich (Google)", "url": "https://developers.google.com/machine-learning/guides/rules-of-ml", "hours": 1, "core": true, "note": "43 rules from production ML at Google." },
+            { "type": "course", "title": "Made With ML — MLOps lessons", "by": "Goku Mohandas", "url": "https://madewithml.com/", "hours": 3, "core": true, "note": "Design → data → training → testing → serving → monitoring." },
+            { "type": "blog", "title": "Making Deep Learning Go Brrrr From First Principles", "by": "Horace He", "url": "https://horace.io/brrr_intro.html", "hours": 0.75, "core": true, "note": "Compute-, memory- and overhead-bound workloads explained." },
+            { "type": "book", "title": "How to Scale Your Model — Parts 1–3", "by": "Google DeepMind (Austin et al.)", "url": "https://jax-ml.github.io/scaling-book/", "hours": 2, "core": true, "note": "Rooflines, TPUs/GPUs and transformer maths for scaling." },
+            { "type": "paper", "title": "Efficient Memory Management for LLM Serving with PagedAttention (vLLM)", "by": "Kwon et al. (2023)", "url": "https://arxiv.org/abs/2309.06180", "hours": 1, "core": true, "note": "KV-cache management, the core problem of LLM serving." },
+            { "type": "blog", "title": "A Visual Guide to Quantization", "by": "Maarten Grootendorst", "url": "https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-quantization", "hours": 1, "core": true, "note": "" },
+            { "type": "book", "title": "The Ultra-Scale Playbook: Training LLMs on GPU Clusters", "by": "Hugging Face", "url": "https://huggingface.co/spaces/nanotron/ultrascale-playbook", "hours": 3, "core": false, "note": "Data, tensor, pipeline and context parallelism, with measurements." },
+            { "type": "paper", "title": "FlashAttention", "by": "Dao et al. (2022)", "url": "https://arxiv.org/abs/2205.14135", "hours": 1, "core": false, "note": "IO-aware attention. A good example of systems thinking." },
+            { "type": "course", "title": "Full Stack Deep Learning (2022)", "by": "FSDL", "url": "https://fullstackdeeplearning.com/course/2022/", "hours": 4, "core": false, "note": "Lectures on the whole lifecycle of ML products." }
+          ],
+          "build": "Take your Week 7 CNN or Week 9 GPT, export it, serve it behind a tiny FastAPI endpoint, and measure latency before and after int8 quantisation."
+        },
+        {
+          "n": 16,
+          "title": "AI safety & interpretability",
+          "goal": "Know the main problems in AI safety and the core ideas of mechanistic interpretability: circuits, superposition and sparse features.",
+          "concepts": ["Specification gaming", "Scalable oversight", "Constitutional AI", "Circuits", "Superposition", "Sparse autoencoders / features", "Deceptive alignment"],
+          "tags": ["Safety & interpretability"],
+          "items": [
+            { "type": "paper", "title": "Concrete Problems in AI Safety", "by": "Amodei et al. (2016)", "url": "https://arxiv.org/abs/1606.06565", "hours": 1, "core": true, "note": "The classic problem framing." },
+            { "type": "blog", "title": "Zoom In: An Introduction to Circuits", "by": "Olah et al. (Distill)", "url": "https://distill.pub/2020/circuits/zoom-in/", "hours": 0.75, "core": true, "note": "" },
+            { "type": "paper", "title": "A Mathematical Framework for Transformer Circuits", "by": "Elhage et al. (Anthropic, 2021)", "url": "https://transformer-circuits.pub/2021/framework/index.html", "hours": 2, "core": true, "note": "The residual stream view of transformers. Your Week 9 work pays off here." },
+            { "type": "paper", "title": "Scaling Monosemanticity", "by": "Templeton et al. (Anthropic, 2024)", "url": "https://transformer-circuits.pub/2024/scaling-monosemanticity/", "hours": 1, "core": true, "note": "Sparse autoencoders find interpretable features in a production model." },
+            { "type": "paper", "title": "On the Biology of a Large Language Model", "by": "Lindsey et al. (Anthropic, 2025)", "url": "https://transformer-circuits.pub/2025/attribution-graphs/biology.html", "hours": 1.5, "core": true, "note": "Attribution graphs that trace model internals for real behaviours." },
+            { "type": "paper", "title": "Constitutional AI: Harmlessness from AI Feedback", "by": "Bai et al. (Anthropic, 2022)", "url": "https://arxiv.org/abs/2212.08073", "hours": 1, "core": true, "note": "RLAIF, which builds on your Weeks 10 and 14." },
+            { "type": "paper", "title": "Toy Models of Superposition", "by": "Elhage et al. (Anthropic, 2022)", "url": "https://transformer-circuits.pub/2022/toy_model/index.html", "hours": 2, "core": false, "note": "Why neurons are polysemantic." },
+            { "type": "paper", "title": "Alignment Faking in Large Language Models", "by": "Greenblatt et al. (2024)", "url": "https://arxiv.org/abs/2412.14093", "hours": 1, "core": false, "note": "" },
+            { "type": "blog", "title": "How to Become a Mechanistic Interpretability Researcher", "by": "Neel Nanda", "url": "https://www.alignmentforum.org/posts/jP9KDyMkchuv6tHwm/how-to-become-a-mechanistic-interpretability-researcher", "hours": 1.5, "core": false, "note": "A roadmap if this week hooks you." },
+            { "type": "course", "title": "ARENA (Alignment Research Engineer Accelerator)", "by": "ARENA", "url": "https://www.arena.education/", "hours": 10, "core": false, "note": "Free, rigorous exercises in interpretability and RL for alignment." },
+            { "type": "docs", "title": "International AI Safety Report", "by": "Bengio et al.", "url": "https://internationalaisafetyreport.org/", "hours": 2, "core": false, "note": "A broad, policy-oriented view of risks and mitigations." }
+          ],
+          "build": "Use TransformerLens on GPT-2 small to find an induction head: run a repeated random-token sequence and look at the attention patterns."
+        }
+      ]
+    }
+  ],
+
+  "whereNext": [
+    {
+      "goal": "ML / AI engineer jobs",
+      "items": [
+        { "type": "video", "title": "Let's reproduce GPT-2 (124M)", "by": "Andrej Karpathy", "url": "https://www.youtube.com/watch?v=l8pRSuU81PU", "note": "A full, efficient training run end to end." },
+        { "type": "course", "title": "CS336: Language Modeling from Scratch", "by": "Stanford", "url": "https://cs336.stanford.edu/", "note": "Build every piece of an LLM stack. Lectures and assignments are public." },
+        { "type": "course", "title": "Practical Deep Learning for Coders", "by": "fast.ai", "url": "https://course.fast.ai/", "note": "Top-down and code-first; a good balance to this theory-first roadmap." },
+        { "type": "book", "title": "Machine Learning Interviews Book", "by": "Chip Huyen", "url": "https://huyenchip.com/ml-interviews-book/", "note": "Free online." }
+      ]
+    },
+    {
+      "goal": "Research masters prep",
+      "items": [
+        { "type": "paper", "title": "How to Read a Paper", "by": "S. Keshav", "url": "http://ccr.sigcomm.org/online/files/p83-keshavA.pdf", "note": "The three-pass method. Two pages." },
+        { "type": "book", "title": "Deep Learning: Foundations and Concepts", "by": "Christopher & Hugh Bishop", "url": "https://www.bishopbook.com/", "note": "Free to read online. A rigorous modern textbook." },
+        { "type": "book", "title": "Probabilistic Machine Learning: Advanced Topics", "by": "Kevin Murphy", "url": "https://probml.github.io/pml-book/book2.html", "note": "Free PDF. A reference for generative models, inference and more." },
+        { "type": "docs", "title": "Hugging Face Daily Papers", "by": "Hugging Face", "url": "https://huggingface.co/papers", "note": "Build a habit: read one paper a week with the three-pass method, and reproduce one result." }
+      ]
+    },
+    {
+      "goal": "Applied AI / agents",
+      "items": [
+        { "type": "course", "title": "Anthropic courses (prompting, tool use, evals)", "by": "Anthropic", "url": "https://github.com/anthropics/courses", "note": "Free notebooks." },
+        { "type": "docs", "title": "OpenAI Cookbook", "by": "OpenAI", "url": "https://cookbook.openai.com/", "note": "Recipes for RAG, evals, function calling and more." },
+        { "type": "blog", "title": "Simon Willison's Weblog", "by": "Simon Willison", "url": "https://simonwillison.net/", "note": "The best running commentary on practical LLM tooling." },
+        { "type": "course", "title": "Hugging Face LLM Course", "by": "Hugging Face", "url": "https://huggingface.co/learn/llm-course", "note": "transformers, datasets, fine-tuning and more." }
+      ]
+    },
+    {
+      "goal": "General AI literacy",
+      "items": [
+        { "type": "docs", "title": "State of AI Report", "by": "Air Street Capital", "url": "https://www.stateof.ai/", "note": "An annual snapshot of research, industry and policy." },
+        { "type": "docs", "title": "Epoch AI — Trends & data", "by": "Epoch AI", "url": "https://epoch.ai/", "note": "Compute, data and capability trends, with sources." },
+        { "type": "blog", "title": "AI as Normal Technology", "by": "Narayanan & Kapoor", "url": "https://knightcolumbia.org/content/ai-as-normal-technology", "note": "A sober counterpoint to the hype." }
+      ]
+    }
+  ],
+
+  "keepUp": [
+    { "type": "docs", "title": "Hugging Face Daily Papers", "by": "Hugging Face", "url": "https://huggingface.co/papers", "note": "Community-curated arXiv, updated daily." },
+    { "type": "blog", "title": "Lil'Log", "by": "Lilian Weng", "url": "https://lilianweng.github.io/", "note": "Deep, long-form surveys." },
+    { "type": "blog", "title": "Ahead of AI", "by": "Sebastian Raschka", "url": "https://magazine.sebastianraschka.com/", "note": "LLM research, explained clearly." },
+    { "type": "blog", "title": "Interconnects", "by": "Nathan Lambert", "url": "https://www.interconnects.ai/", "note": "Post-training, RL and open models." },
+    { "type": "blog", "title": "Import AI", "by": "Jack Clark", "url": "https://importai.substack.com/", "note": "A weekly research digest with policy context." },
+    { "type": "blog", "title": "The Batch", "by": "DeepLearning.AI", "url": "https://www.deeplearning.ai/the-batch/", "note": "A weekly news roundup." },
+    { "type": "blog", "title": "Transformer Circuits Thread", "by": "Anthropic", "url": "https://transformer-circuits.pub/", "note": "Frontier interpretability research." },
+    { "type": "blog", "title": "Simon Willison's Weblog", "by": "Simon Willison", "url": "https://simonwillison.net/", "note": "New models and tools, tested hands-on." }
+  ]
+}

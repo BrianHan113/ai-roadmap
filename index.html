@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>AI Foundations Roadmap</title>
+  <meta name="description" content="A 16-week, theory-first roadmap of free resources for a solid foundation in ML, deep learning, LLMs and applied AI.">
+  <meta name="theme-color" content="#1b1f3b">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" href="icons/favicon-64.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="AI Roadmap">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Back to top">
+      <img src="icons/favicon-64.png" alt="" width="28" height="28">
+      <span>AI Roadmap</span>
+    </a>
+    <button id="installBtn" class="btn btn-ghost" hidden>Install app</button>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <p class="eyebrow" id="lastUpdated">&nbsp;</p>
+      <h1 id="title">AI Foundations Roadmap</h1>
+      <p class="lede" id="subtitle"></p>
+      <p class="assumes" id="assumes"></p>
+      <dl class="stats" id="stats"></dl>
+      <nav class="timeline" id="timeline" aria-label="Weeks at a glance"></nav>
+      <div class="legend" id="legend"></div>
+    </section>
+
+    <section class="card news" id="news" aria-labelledby="newsTitle"></section>
+
+    <div class="controls" id="controls">
+      <label class="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Search papers, topics, authors…" autocomplete="off">
+      </label>
+      <div class="chips" id="typeChips" role="group" aria-label="Filter by type"></div>
+      <label class="toggle">
+        <input type="checkbox" id="coreOnly">
+        <span>Core only</span>
+      </label>
+    </div>
+
+    <div id="roadmap"></div>
+    <p class="empty" id="empty" hidden>Nothing matches that search.</p>
+
+    <section class="section" id="where-next">
+      <h2>After week 16: where next</h2>
+      <p class="muted">Pick the track that matches what you're going for.</p>
+      <div class="tabs" id="goalTabs" role="tablist"></div>
+      <ul class="items" id="goalItems"></ul>
+    </section>
+
+    <section class="section" id="keep-up">
+      <h2>Keeping up with the frontier</h2>
+      <p class="muted">A few high-signal sources. Skim weekly; don't try to read everything.</p>
+      <ul class="items" id="keepUp"></ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p><strong>This is a living page.</strong> New SOTA work gets added over time and is logged in “What's new”. Recently added items carry a <span class="badge-new">New</span> badge.</p>
+    <p class="muted" id="iosHint" hidden>To install on iPhone: tap <strong>Share</strong> → <strong>Add to Home Screen</strong>.</p>
+    <p class="muted" id="offlineNote"></p>
+  </footer>
+
+  <script src="assets/app.js" defer></script>
+</body>
+</html>
