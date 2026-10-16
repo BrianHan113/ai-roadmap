@@ -1,6 +1,6 @@
 # AI Foundations Roadmap
 
-A 16-week, theory-first roadmap of free resources for building a solid foundation in AI: classical ML, deep learning, transformers & LLMs, applied AI/agents, plus vision, RL, ML systems, and safety & interpretability.
+A 19-week, theory-first roadmap of free resources for building a solid foundation in AI: classical ML, deep learning, transformers & LLMs, applied AI/agents, plus vision, RL, ML systems, and safety & interpretability, and a closing phase on AI engineering in practice (coding agents, LLM APIs, evals).
 
 It's a static site hosted on GitHub Pages that installs on your phone like an app and works offline.
 
